@@ -1,0 +1,9 @@
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
+
+# Fill missing values
+df["product_name"] = df["product_name"].fillna("")
+
+# Convert product names into TF-IDF vectors
+vectorizer = TfidfVectorizer(stop_words="english")
+tfidf_matrix = vectorizer.fit_transform(df["product_name"])
