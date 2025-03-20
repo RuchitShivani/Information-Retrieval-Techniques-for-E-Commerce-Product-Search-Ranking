@@ -1,0 +1,11 @@
+def search(query, top_n=5):
+    """Search for similar products using cosine similarity"""
+    query_vec = vectorizer.transform([query])
+    similarity = cosine_similarity(query_vec, tfidf_matrix)
+    top_indices = similarity.argsort()[0][-top_n:][::-1]  # Get top matches
+
+    return df.iloc[top_indices][["product_name"]]
+
+# Example search query
+query = "wireless earphones"
+search(query)
